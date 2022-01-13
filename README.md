@@ -25,4 +25,4 @@ rm ~/.firewalla/config/dnsmasq_local/unifi
 rm -rf /home/pi/.firewalla/run/docker/unifi
 ```
 
-There are lots of UniFi communities on [Reddit](https://www.reddit.com/r/Ubiquiti/) and [Facebook](https://www.facebook.com/groups/586080611853291). If you have unifi questions, please check there. 
+There are lots of UniFi communities on [Reddit](https://www.reddit.com/r/Ubiquiti/) and [Facebook](https://www.facebook.com/groups/586080611853291). If you have UniFi questions, please check there. 
