@@ -57,4 +57,4 @@ do
         echo -n "."
         sleep 2s
 done
-echo -e "Done.\n\nYou can open https://172.16.1.2:8443/ in your favorite browser and set up your UniFi Controller."
+echo -e "Done!\n\nYou can open https://172.16.1.2:8443/ in your favorite browser and set up your UniFi Controller.\n\n"
