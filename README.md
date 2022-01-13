@@ -12,7 +12,9 @@ Next, copy the line below and paste into the Firewalla shell.
 
 **Standard disclaimer:** I can not be responsible for any issues that may result. Happy to answer questions though if I can. :) 
 
-If you need to reset the container (stop and remove and try again) run the following commands:
+If you need to reset the container (stop and remove and try again) run the following commands. 
+
+WARNING: if you use these commands you are stopping and removing the container. Don't do this unless you are sure that you don't mind potentially losing stuff. If you haven't managed to get the Controller running then there is probably no harm in going forward. Otherwise, only do this if you know at least a little bit about what you are doing. 
 
 ```
 sudo docker container stop unifi && sudo docker container rm unifi
