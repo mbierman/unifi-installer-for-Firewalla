@@ -10,7 +10,7 @@ Next, copy the line below and paste into the Firewalla shell.
  curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer/main/unifi_docker_install.sh | cat <(cat <(bash))
 ```
 
-**Standard disclaimer:** I can not be responsible for any issues that result. Happy to answer questions though. :) 
+**Standard disclaimer:** I can not be responsible for any issues that may result. Happy to answer questions though if I can. :) 
 
 If you need to reset the container (stop and remove and try again) run the following commands:
 
