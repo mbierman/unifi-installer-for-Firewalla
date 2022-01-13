@@ -2,7 +2,8 @@
 
 sudo mkdir /data/unifi
 mkdir /home/pi/.firewalla/run/docker/unifi/
- curl https://gist.githubusercontent.com/mbierman/f678519a3f5db2b478fc506726d84a46/raw/c899d19409c665d57964dd1ec0d7de393c78914f/docker-compose.yaml > /home/pi/.firewalla/run/docker/unifi/docker-compose.yaml
+curl https://gist.githubusercontent.com/mbierman/f678519a3f5db2b478fc506726d84a46/raw/c899d19409c665d57964dd1ec0d7de393c78914f/docker-compose.yaml \
+> /home/pi/.firewalla/run/docker/unifi/docker-compose.yaml
 
 cd /home/pi/.firewalla/run/docker/unifi/
 
