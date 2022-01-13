@@ -12,9 +12,7 @@ Next, copy the line below and paste into the Firewalla shell.
 
 **Standard disclaimer:** I can not be responsible for any issues that result. Happy to answer questions though. :) 
 
-If you need to reset the container (stop and remove and try again) here are some basic steps
-
-Run the following commands
+If you need to reset the container (stop and remove and try again) run the following commands:
 
 ```
 sudo docker container stop unifi && sudo docker container rm unifi
@@ -22,3 +20,5 @@ rm /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 rm ~/.firewalla/config/dnsmasq_local/unifi
 rm -rf /home/pi/.firewalla/run/docker/unifi
 ```
+
+There are lots of unifi communities on [Reddit](https://www.reddit.com/r/Ubiquiti/) and [Facebook](https://www.facebook.com/groups/586080611853291). If you have unifi questions, please check there. 
