@@ -10,7 +10,7 @@ Next, copy the line below and paste into the Firewalla shell.
  curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer/main/unifi_docker_install.sh | cat <(cat <(bash))
 ```
 
-**Standard disclaimer:** I can not be responsible for any issues that may result. NOthing in the script should in any wY, affect firewalla as a router or comprimise security. Happy to answer questions though if I can. :) 
+**Standard disclaimer:** I can not be responsible for any issues that may result. Nothing in the script should in any way, affect firewalla as a router or comprimise security. Happy to answer questions though if I can. :) 
 
 If you need to reset the container (stop and remove and try again) run the following commands. 
 
