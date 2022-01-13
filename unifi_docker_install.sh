@@ -1,16 +1,12 @@
 #!/bin/bash 
 
 path1=/data/unifi
-if [ -d "$path1" ]; then
-        echo "${path1}..."
-else
-         sudo mkdir $path1
+if [ ! -d "$path1" ]; then
+        sudo mkdir $path1
 fi
 
 path2=/home/pi/.firewalla/run/docker/unifi/
-if [ -d "$path2" ]; then
-        echo "${path2} exists..."
-else
+if [ ! -d "$path2" ]; then
         mkdir $path2
 fi
 
@@ -38,9 +34,7 @@ sudo systemctl restart firerouter_dns
 sudo docker-compose down
 
 path3=/home/pi/.firewalla/config/post_main.d
-if [ -d "$path3" ]; then
-        echo "${path3}... exists"
-else
+if [ ! -d "$path3" ]; then
         mkdir $path3
 fi
 
@@ -54,8 +48,8 @@ sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  /home/pi/.firewa
 
 chmod a+x /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 
-sudo docker stop unifi 
-sudo docker start unifi 
+sudo docker stop unifi
+sudo docker start unifi
 
 echo -n "Restarting docker"
 while [ -z "$(sudo docker ps | grep unifi | grep Up)" ]
