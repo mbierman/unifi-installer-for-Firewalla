@@ -1,5 +1,9 @@
 # unifi-installer
 
-This is a 1.0 script for installing the UniFi container on Firewalla Gold or Purple. It should get you up and running. If it does not, 
+This is a 1.0 script for installing the UniFi container on Firewalla Gold or Purple. It should get you up and running. It is based on the [Firewalla tutorial](https://help.firewalla.com/hc/en-us/articles/360053441074-Guide-How-to-run-UniFi-Controller-on-the-Firewalla-Gold-or-Purple-).
 
- curl -s -L -C- https://gist.githubusercontent.com/mbierman/c77e46257432df9796fc39fc36746f15/raw/ec120af0e21259e14bb06e04b79370f8851cf25a/unifi_docker_install.sh | cat <(cat <(bash))
+To isntall, you can 
+
+ ```
+ curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer/main/unifi_docker_install.sh | cat <(cat <(bash))
+```
