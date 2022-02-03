@@ -4,7 +4,7 @@ This is a "1.0" script for installing the UniFi docker container on Firewalla Go
 
 To install, [learn how to ssh into your firewalla](https://help.firewalla.com/hc/en-us/articles/115004397274-How-to-access-Firewalla-using-SSH-) if you don't know how already.
 
-Next, copy the line below and paste into the Firewalla shell. 
+Next, copy the line below and paste into the Firewalla shell and then hit enter. 
 
  ```
  curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer/main/unifi_docker_install.sh | cat <(cat <(bash))
