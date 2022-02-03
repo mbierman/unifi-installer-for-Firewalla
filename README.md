@@ -1,4 +1,4 @@
-# Install UniFi Docker Container on Firewalla Gold or Purple
+# Install UniFi Controller in Docker on Firewalla Gold or Purple
 
 This is a "1.0" script for installing the UniFi docker container on Firewalla Gold or Purple. It should get you up and running. It is based on the [Firewalla tutorial](https://help.firewalla.com/hc/en-us/articles/360053441074-Guide-How-to-run-UniFi-Controller-on-the-Firewalla-Gold-or-Purple-).
 
