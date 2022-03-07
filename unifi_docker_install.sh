@@ -13,6 +13,8 @@ fi
 curl https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml \
 > $path2/docker-compose.yaml
 
+exit 
+
 cd $path2
 
 sudo systemctl start docker-compose@unifi
