@@ -49,10 +49,10 @@ sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  /home/pi/.firewa
 
 chmod a+x /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 
-sudo docker stop unifi
-sudo docker start unifi
+# sudo docker stop unifi
 
 echo -n "Restarting docker"
+sudo docker start unifi
 while [ -z "$(sudo docker ps | grep unifi | grep Up)" ]
 do
         echo -n "."
