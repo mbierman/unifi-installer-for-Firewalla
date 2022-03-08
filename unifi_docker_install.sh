@@ -20,7 +20,7 @@ sudo systemctl start docker-compose@unifi
 
 sudo docker ps
 
-echo -n "Starting docker"
+echo -n "Starting docker (this can take ~ one minute)"
 while [ -z "$(sudo docker ps | grep unifi | grep Up)" ]
 do
         echo -n "."
