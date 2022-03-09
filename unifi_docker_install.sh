@@ -49,8 +49,6 @@ sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  /home/pi/.firewa
 
 chmod a+x /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 
-# sudo docker stop unifi
-
 echo -n "Restarting docker"
 sudo docker start unifi
 while [ -z "$(sudo docker ps | grep unifi | grep Up)" ]
@@ -58,4 +56,4 @@ do
         echo -n "."
         sleep 2s
 done
-echo -e "Done!\n\nYou can open https://172.16.1.2:8443/ in your favorite browser and set up your UniFi Controller.\n\n"
+echo -e "Done!\n\nYou can open https://172.16.1.2:8443/ in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.\n\n"
