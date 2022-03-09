@@ -18,8 +18,8 @@ Update: the [installer script](https://raw.githubusercontent.com/mbierman/unifi-
 
 ## using the script
 
-1. Save this file on your firewalla (/home/pi/.firewalla/run/docker/ is good)
-1. chmod a+x [scriptname] to make it executable
+1. Save this file on your firewalla (`/home/pi/.firewalla/run/docker/` is good)
+1. `chmod a+x [scriptname]` to make it executable
 2. Run the script. 
 
 
