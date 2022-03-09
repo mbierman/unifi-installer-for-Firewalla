@@ -14,9 +14,12 @@ Next, copy the line below and paste into the Firewalla shell and then hit enter.
 
 # Uninstalling
 
-Update: the [installer script](https://raw.githubusercontent.com/mbierman/unifi-installer/main/unifi-uninstall.sh) will remove the unifi docker and ALL related data. If you want to start from square one, you can use this. But be warned, I mean square one. It is currently set to remove all the docker data. I may make it more forgiving in the future, but if things aren't working and you need to start over, this should get you there.
+## Using an uninsall script
 
-## Using the script
+
+The [installer script](https://raw.githubusercontent.com/mbierman/unifi-installer/main/unifi-uninstall.sh) will remove the unifi docker and ALL related data. If you want to start from square one, you can use this. But be warned, I mean square one. It is currently set to remove all the docker data. I may make it more forgiving in the future, but if things aren't working and you need to start over, this should get you there.
+
+If you want more of a piecemeal approach, see below.
 
 1. ssh to your firewalla. User is always `pi` and the password comes from the Firewalla app. 
 1. Save the uninstall script on your firewalla:
