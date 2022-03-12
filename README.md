@@ -30,6 +30,8 @@ If you want more of a piecemeal approach, see below.
 
 You should now be back to a clean slate and ready to re-install if you choose do do so. 
 
+## Uninsalling Manually
+
 If you want something less severe, the commands below give you more discresion. 
 
 If you need to reset the container (stop and remove and try again) run the following commands. 
