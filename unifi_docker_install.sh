@@ -21,7 +21,7 @@ sudo systemctl start docker-compose@unifi
 sudo docker ps
 
 echo -n "Starting docker (this can take ~ one minute)"
-while [ -z "$(sudo docker ps | grep unifi | grep Up)" ]
+while [ -z "$(sudo docker ps | grep unifi | grep -o Up)" ]
 do
         echo -n "."
         sleep 2s
