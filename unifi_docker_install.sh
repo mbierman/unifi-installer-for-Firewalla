@@ -32,7 +32,7 @@ sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "un
 sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
 echo address=/unifi/172.16.1.2 > ~/.firewalla/config/dnsmasq_local/unifi
 sudo systemctl restart firerouter_dns
-sudo docker-compose down
+sudo docker restart unifi
 
 path3=/home/pi/.firewalla/config/post_main.d
 if [ ! -d "$path3" ]; then
