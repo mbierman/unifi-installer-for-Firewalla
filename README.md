@@ -26,7 +26,7 @@ If you want more of a piecemeal approach, see below.
 1. ssh to your firewalla. User is always `pi` and the password comes from the Firewalla app. 
 1. Save the uninstall script on your firewalla:
    - `cd /home/pi/.firewalla/run/docker/`
-   - `curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > \ /data/unifi-uninstall.sh`
+   - `curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > /data/unifi-uninstall.sh`
 4. Make it executable:
    - `chmod a+x /home/pi/.firewalla/run/docker/unifi-uninstall.sh`
 6. Run the script:
