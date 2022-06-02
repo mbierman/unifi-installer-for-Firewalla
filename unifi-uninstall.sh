@@ -10,7 +10,7 @@ if ! [[ "$now" = "Y" || "$now" = "y" ]]; then
 fi
 
 echo -e "\n\nStarting uninstall...\n"
-[ -d ~/.firewalla/run/docker/unifi ] && cd ~/.firewalla/run/docker/unifi || echo no directory to delete
+[ -d ~/.firewalla/run/docker/unifi ] && cd ~/.firewalla/run/docker/unifi || echo -e "\n\nno directory to delete\n"
 sudo docker container stop unifi && sudo docker container rm unifi
 sudo docker system prune -a
 sudo docker image prune -a
@@ -23,4 +23,4 @@ sudo rm -rf /data/unifi  2> /dev/null
 sudo ip route del 172.17.0.0/16 2> /dev/null
 sudo systemctl restart firerouter_dns
 sudo rm -rf /data/unifi-uninstall.sh
-echo "fin"
+echo -e  "\n\nfin."
