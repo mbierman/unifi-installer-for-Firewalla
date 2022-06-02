@@ -8,7 +8,7 @@ This is a script for installing the UniFi docker container on Firewalla Gold. It
 To install:
 1. SSH into your Firewalla ([learn how](https://help.firewalla.com/hc/en-us/articles/115004397274-How-to-access-Firewalla-using-SSH-) if you don't know how already.)
 
-2. copy the line below and paste into the Firewalla shell and then hit enter. 
+2. Copy the line below and paste into the Firewalla shell and then hit enter.
 
 ```
 curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi_docker_install.sh | cat <(cat <(bash))
@@ -26,7 +26,7 @@ If you want more of a piecemeal approach, see below.
 1. ssh to your firewalla. User is always `pi` and the password comes from the Firewalla app. 
 1. Save the uninstall script on your firewalla:
    - `cd /home/pi/.firewalla/run/docker/`
-   - `curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > \ /home/pi/.firewalla/run/docker/unifi-uninstall.sh`
+   - `curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > \ /data/unifi-uninstall.sh`
 4. Make it executable:
    - `chmod a+x /home/pi/.firewalla/run/docker/unifi-uninstall.sh`
 6. Run the script:
