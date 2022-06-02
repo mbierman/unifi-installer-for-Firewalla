@@ -16,9 +16,9 @@ sudo docker system prune -a
 sudo docker image prune -a
 sudo docker volume prune
 sudo docker ps
-rm /home/pi/.firewalla/config/post_main.d/start_unifi.sh  2> /dev/null
-rm ~/.firewalla/config/dnsmasq_local/unifi  2> /dev/null
-rm -rf /home/pi/.firewalla/run/docker/unifi  2> /dev/null
+sudo rm -rf /home/pi/.firewalla/config/post_main.d/start_unifi.sh  2> /dev/null
+sudo rm -rf /home/pi/.firewalla/config/dnsmasq_local/unifi  2> /dev/null
+sudo rm -rf /home/pi/.firewalla/run/docker/unifi  2> /dev/null
 sudo rm -rf /data/unifi  2> /dev/null
 sudo ip route del 172.17.0.0/16 
 sudo systemctl restart firerouter_dns
