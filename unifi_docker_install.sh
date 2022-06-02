@@ -10,8 +10,7 @@ if [ ! -d "$path2" ]; then
         mkdir $path2
 fi
 
-curl https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml \
-> $path2/docker-compose.yaml
+curl https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
  
 
 cd $path2
