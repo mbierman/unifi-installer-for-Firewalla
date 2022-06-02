@@ -55,4 +55,4 @@ do
         echo -n "."
         sleep 2s
 done
-echo -e "Done!\n\nYou can open https://172.16.1.2:8443/ in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
+echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
