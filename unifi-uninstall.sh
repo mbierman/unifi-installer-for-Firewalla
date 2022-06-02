@@ -5,7 +5,7 @@ echo -e "WARNING! this will uninstall unifi from your Firewalla and remove all s
 read -p "Please press 'Y' to continue or any key to stop: " -n1 now
 
 if ! [[ "$now" = "Y" || "$now" = "y" ]]; then
-        echo "No changes made."
+        echo -e "\nNo changes made.\n\n"
         exit
 fi
 
@@ -21,3 +21,4 @@ rm ~/.firewalla/config/dnsmasq_local/unifi
 rm -rf /home/pi/.firewalla/run/docker/unifi
 sudo rm -rf /data/unifi
 sudo ip route del 172.17.0.0/16 
+sudo systemctl restart firerouter_dns
