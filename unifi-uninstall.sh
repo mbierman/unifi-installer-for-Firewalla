@@ -1,4 +1,5 @@
 #!/bin/bash
+# v 2.0
 
 echo -e "WARNING! this will uninstall unifi from your Firewalla and remove all settings files.\n\nThere is no way to recover any lost files. Do not do this unless you are sure! "
 
