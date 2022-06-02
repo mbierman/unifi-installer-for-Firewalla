@@ -20,5 +20,5 @@ sudo rm -rf /home/pi/.firewalla/config/post_main.d/start_unifi.sh  2> /dev/null
 sudo rm -rf /home/pi/.firewalla/config/dnsmasq_local/unifi  2> /dev/null
 sudo rm -rf /home/pi/.firewalla/run/docker/unifi  2> /dev/null
 sudo rm -rf /data/unifi  2> /dev/null
-sudo ip route del 172.17.0.0/16 
+sudo ip route del 172.17.0.0/16 2> /dev/null
 sudo systemctl restart firerouter_dns
