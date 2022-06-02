@@ -9,7 +9,7 @@ if ! [[ "$now" = "Y" || "$now" = "y" ]]; then
         exit
 fi
 
-echo "Starting uninstall"
+echo -e "\n\nStarting uninstall...\n"
 cd ~/.firewalla/run/docker/unifi
 sudo docker container stop unifi && sudo docker container rm unifi
 sudo docker system prune -a
