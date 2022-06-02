@@ -10,7 +10,7 @@ if ! [[ "$now" = "Y" || "$now" = "y" ]]; then
 fi
 
 echo -e "\n\nStarting uninstall...\n"
-cd ~/.firewalla/run/docker/unifi
+[ -d ~/.firewalla/run/docker/unifi ] && cd ~/.firewalla/run/docker/unifi || echo no directory to delete
 sudo docker container stop unifi && sudo docker container rm unifi
 sudo docker system prune -a
 sudo docker image prune -a
