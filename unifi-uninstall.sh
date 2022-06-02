@@ -5,9 +5,11 @@ echo -e "WARNING! this will uninstall unifi from your Firewalla and remove all s
 read -p "Please press 'Y' to continue or any key to stop: " -n1 now
 
 if ! [[ "$now" = "Y" || "$now" = "y" ]]; then
+        echo "No changes made."
         exit
 fi
 
+echo "Starting uninstall"
 cd ~/.firewalla/run/docker/unifi
 sudo docker container stop unifi && sudo docker container rm unifi
 sudo docker system prune -a
