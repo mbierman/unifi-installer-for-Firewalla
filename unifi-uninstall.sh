@@ -20,3 +20,4 @@ rm /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 rm ~/.firewalla/config/dnsmasq_local/unifi
 rm -rf /home/pi/.firewalla/run/docker/unifi
 sudo rm -rf /data/unifi
+sudo ip route del 172.17.0.0/16 
