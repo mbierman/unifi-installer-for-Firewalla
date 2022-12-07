@@ -30,7 +30,7 @@ If you want more of a piecemeal approach, see below.
 4. Make it executable:
    - `chmod a+x /data/unifi-uninstall.sh`
 6. Run the script:
-   - `/home/pi/.firewalla/run/docker/unifi-uninstall.sh`
+   - `/data/unifi-uninstall.sh`
 
 You should now be back to a clean slate and ready to re-install if you choose do do so. 
 
