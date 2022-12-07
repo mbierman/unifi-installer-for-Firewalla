@@ -28,7 +28,7 @@ If you want more of a piecemeal approach, see below.
    - `cd /data`
    - `curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > /data/unifi-uninstall.sh`
 4. Make it executable:
-   - `chmod a+x /data/unifi-uninstall.sh`
+   - `chmod +x /data/unifi-uninstall.sh`
 6. Run the script:
    - `/data/unifi-uninstall.sh`
 
