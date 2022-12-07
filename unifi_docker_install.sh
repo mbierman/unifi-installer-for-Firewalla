@@ -1,5 +1,5 @@
 #!/bin/bash 
-# v 1.3.0
+# v 1.3.1
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
         sudo mkdir $path1
