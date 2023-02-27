@@ -1,18 +1,22 @@
 #!/bin/bash 
-# v 1.3.2
+# v 1.4.0
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
         sudo mkdir $path1
+	sudo chown pi $path1
+	sudo chmod +rw $path1
 fi
 
 path2=/home/pi/.firewalla/run/docker/unifi/
 if [ ! -d "$path2" ]; then
-        mkdir $path2
+        sudo mkdir $path2
+	sudo chown pi $path2
+	sudo chmod +rw $path2
 fi
 
 curl https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
- 
-
+sudo chown pi $path2/docker-compose.yaml
+sudo chmod +rw $path2/docker-compose.yaml
 cd $path2
 
 sudo systemctl start docker-compose@unifi
@@ -41,6 +45,9 @@ sudo docker restart unifi
 path3=/home/pi/.firewalla/config/post_main.d
 if [ ! -d "$path3" ]; then
         mkdir $path3
+        sudo mkdir $path3
+	sudo chown pi $path3
+	sudo chmod +rw $path3
 fi
 
 echo "#!/bin/bash
@@ -52,6 +59,7 @@ sudo ipset create -! docker_wan_routable_net_set hash:net
 sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 
 chmod a+x /home/pi/.firewalla/config/post_main.d/start_unifi.sh
+chown pi /home/pi/.firewalla/config/post_main.d/start_unifi.sh
 
 echo -n "Restarting docker unifi"
 sudo docker start unifi
