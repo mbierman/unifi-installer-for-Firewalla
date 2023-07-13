@@ -27,9 +27,16 @@ If you want more of a piecemeal approach, see below.
 1. Save the uninstall script on your firewalla:
    ```
    $ cd /data
+   ```
+   ```
    $ sudo touch uninstall-unifi.sh
+   ```
    $ sudo chmod +xwr unifi-uninstall.sh
+   ```
+   ```
    $ sudo chown pi unifi-uninstall.sh
+   ```
+   ```
    $ curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > /data/unifi-uninstall.sh
    ```
 4. Make it executable:
