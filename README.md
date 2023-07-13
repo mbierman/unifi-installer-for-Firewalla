@@ -41,11 +41,11 @@ Go to the directory you want to save the script.
    ```
    sudo chown pi unifi-uninstall.sh
    ```
-Get the uninstall file and save to the file you just created.
+1. Get the uninstall file and save to the file you just created.
    ```
    curl https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > /data/unifi-uninstall.sh
    ```
-Run the script.
+1. Run the script.
    ```
    /data/unifi-uninstall.sh
    ```
