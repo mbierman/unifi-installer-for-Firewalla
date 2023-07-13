@@ -31,6 +31,7 @@ If you want more of a piecemeal approach, see below.
    ```
    $ sudo touch uninstall-unifi.sh
    ```
+   ```
    $ sudo chmod +xwr unifi-uninstall.sh
    ```
    ```
