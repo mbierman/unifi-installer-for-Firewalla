@@ -36,6 +36,10 @@ sleep 10
 sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
 sleep 10
 sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
+
+dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
+sudo touch $dns_settings
+sudo a+rw $dns_settings
 echo address=/unifi/172.16.1.2 > ~/.firewalla/config/dnsmasq_local/unifi
 sleep 10
 sudo systemctl restart firerouter_dns
