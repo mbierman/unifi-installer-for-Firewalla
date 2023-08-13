@@ -1,10 +1,14 @@
 #!/bin/bash 
 # v 1.4.0
+
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
         sudo mkdir $path1
 	sudo chown pi $path1
 	sudo chmod +rw $path1
+ 	echo -e "\n✅ unifi directory created."
+ else
+ 	echo -e "\n✅ unifi directory exists."
 fi
 
 path2=/home/pi/.firewalla/run/docker/unifi/
@@ -12,11 +16,16 @@ if [ ! -d "$path2" ]; then
         sudo mkdir $path2
 	sudo chown pi $path2
 	sudo chmod +rw $path2
+  	echo -e "\n✅ unifi run directory created."
+ else
+ 	echo -e "\n✅ unifi run directory exists."
+
 fi
 
 curl https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
 sudo chown pi $path2/docker-compose.yaml
 sudo chmod +rw $path2/docker-compose.yaml
+echo -e "\n✅ unifi yaml created."
 cd $path2
 
 sudo systemctl start docker-compose@unifi
@@ -29,7 +38,7 @@ do
         echo -n "."
         sleep 2s
 done
-echo "Done"
+echo -e "\n✅ unifi has started"
 
 echo "configuring networks..."
 sleep 10
@@ -39,11 +48,13 @@ sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "un
 
 dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
 sudo touch $dns_settings
-sudo chown pi $dns_settings 
+sudo chown pi $dns_settings
 sudo chmod a+rw $dns_settings
 echo address=/unifi/172.16.1.2 > ~/.firewalla/config/dnsmasq_local/unifi
+echo -e "\n✅ unifi network settings saved."
 sleep 10
 sudo systemctl restart firerouter_dns
+echo -e "\n✅ Network service restarted...
 sleep 5
 sudo docker restart unifi
 
@@ -61,10 +72,10 @@ sudo systemctl start docker-compose@unifi
 sudo ipset create -! docker_lan_routable_net_set hash:net
 sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
 sudo ipset create -! docker_wan_routable_net_set hash:net
-sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  /home/pi/.firewalla/config/post_main.d/start_unifi.sh
+sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  $path3/start_unifi.sh
 
-chmod a+x /home/pi/.firewalla/config/post_main.d/start_unifi.sh
-chown pi /home/pi/.firewalla/config/post_main.d/start_unifi.sh
+chmod a+x $path3/start_unifi.sh
+chown pi  $path3/start_unifi.sh
 
 echo -n "Restarting docker unifi"
 sudo docker start unifi
