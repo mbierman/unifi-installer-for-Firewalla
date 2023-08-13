@@ -31,15 +31,15 @@ Go to the directory you want to save the script.
    ```
 1. Create an empty file.
    ```
-   sudo touch uninstall-unifi.sh
+   sudo touch unifi-uninstall.sh
    ```
 1. Give it permissions to read, write, execute.
    ```
-   sudo chmod +xwr uninstall-unifi.sh
+   sudo chmod +xwr unifi-uninstall.sh
    ```
 1. Change the owner of the file
    ```
-   sudo chown pi uninstall-unifi.sh
+   sudo chown pi unifi-uninstall.sh
    ```
 1. Get the uninstall file and save to the file you just created.
    ```
