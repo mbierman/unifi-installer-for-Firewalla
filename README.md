@@ -46,7 +46,7 @@ Go to the directory you want to save the script.
    ```
 1. Get the uninstall file and save to the file you just created.
    ```
-   curl -s https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh > /data/unifi-uninstall.sh
+   curl -s https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh?$(date +%s) > /data/unifi-uninstall.sh
    ```
 1. Run the script.
    ```
