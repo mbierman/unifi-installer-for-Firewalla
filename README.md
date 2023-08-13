@@ -54,11 +54,11 @@ You should now be back to a clean slate and ready to re-install if you choose do
 
 ## Uninstalling Manually
 
-If you want something less severe, the commands below give you more discresion. 
+If you want something less severe, the commands below give you more discretion. 
 
 If you need to reset the container (stop and remove and try again) run the following commands. 
 
-WARNING: if you use these commands you are stopping and removing the container. Don't do this unless you are sure that you don't mind potentially losing stuff. If you haven't managed to get the Controller running then there is probably no harm in going forward. Otherwise, only do this if you know at least a little bit about what you are doing. 
+**WARNING:** If you use these commands you are stopping and removing the container. Don't do this unless you are sure that you don't mind potentially losing stuff. If you haven't managed to get the Controller running then there is probably no harm in going forward. Otherwise, only do this if you know at least a little bit about what you are doing. 
 
 ```
 sudo docker container stop unifi && sudo docker container rm unifi
