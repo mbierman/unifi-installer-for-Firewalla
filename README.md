@@ -1,4 +1,4 @@
-# Install UniFi Controller in Docker on Firewalla Gold 
+# Install UniFi Controller in Docker on Firewalla Gold Series Boxes
 
 <hr>Note, although this installer also works on Firewalla Purple, I have seen people having trouble running large docker images on Purple and so be warned that this may be too taxing for Puprle. To my knowledge, Firewalla hasn't made any official statement about this, but I felt a warning was justified. 
 
