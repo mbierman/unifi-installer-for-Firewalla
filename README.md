@@ -19,6 +19,18 @@ curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer-for-Fi
 
 **Standard disclaimer:** I can not be responsible for any issues that may result. Nothing in the script should in any way, affect firewalla as a router or compromise security. Happy to answer questions though if I can. :)
 
+# Updating docker
+From time to time unifi will update the Controller. After vetting it for a while, the owner of the container will update the image. This is a good thing. It means you get some confidence it will run when you update it. I wrote a script to do the updates. I watch when the container is updated and then run the script. You could do this via a cron job (e.g. once a week run the update and if there isn't one it will just exit) but I don't tend to do that since if it goes poorly my controller could be down. 
+
+To update the unifi docker container in the future, go to:
+```
+/home/pi/.firewalla/run/docker
+```
+and run
+```
+./updatedocker.sh unifi
+```
+
 # Uninstalling
 The [installer script](https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh) will remove the unifi docker and ALL related data. If you want to start from square one, you can use this. But be warned, I mean square one. It is currently set to remove all the docker data. I may make it more forgiving in the future, but if things aren't working and you need to start over, this should get you there.
 
