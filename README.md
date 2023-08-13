@@ -35,11 +35,11 @@ Go to the directory you want to save the script.
    ```
 1. Give it permissions to read, write, execute.
    ```
-   sudo chmod +xwr unifi-uninstall.sh
+   sudo chmod +xwr uninstall-unifi.sh
    ```
 1. Change the owner of the file
    ```
-   sudo chown pi unifi-uninstall.sh
+   sudo chown pi uninstall-unifi.sh
    ```
 1. Get the uninstall file and save to the file you just created.
    ```
@@ -47,7 +47,7 @@ Go to the directory you want to save the script.
    ```
 1. Run the script.
    ```
-   /data/unifi-uninstall.sh
+   /data/uninstall-unifi.sh
    ```
 
 You should now be back to a clean slate and ready to re-install if you choose do do so. 
