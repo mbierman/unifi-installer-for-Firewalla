@@ -60,7 +60,7 @@ sudo docker restart unifi
 
 update=/home/pi/.firewalla/run/docker/updatedocker.sh
 touch $update
-sudo chown pi $updae
+sudo chown pi $update
 sudo chmod a+xrw $update
 curl -s https://gist.githubusercontent.com/mbierman/6cf22430ca0c2ddb699ac8780ef281ef/raw/4d5ab48db1d6aba9cde7032950ab44a9d3d77a8f/updatedocker.sh > $update
 
