@@ -83,8 +83,7 @@ sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  $path3/start_uni
 chmod a+x $path3/start_unifi.sh
 chown pi  $path3/start_unifi.sh
 
-echo -n "Restarting docker unifi"
-sudo docker start unifi
+echo -n "Restarting docker " && sudo docker start unifi
 while [ -z "$(sudo docker ps | grep unifi | grep Up)" ]
 do
         echo -n "."
