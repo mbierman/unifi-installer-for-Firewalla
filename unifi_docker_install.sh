@@ -93,4 +93,4 @@ echo -e "\nStarting the container, please wait....\n"
 sleep 60
 
 echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
-echo -e "\n\n To update the unifi docker container in the future, go to\n/home/pi/.firewalla/run/docker \n and run ./updatedocker.sh unifi\n\n" 
+echo -e "\n\n To update the unifi docker container in the future, go to\n/home/pi/.firewalla/run/docker \n and run\n./updatedocker.sh unifi\n\n"
