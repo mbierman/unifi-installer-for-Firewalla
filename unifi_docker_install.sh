@@ -1,5 +1,5 @@
 #!/bin/bash 
-# v 1.4.0
+# v 1.4.1
 
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
@@ -22,7 +22,7 @@ if [ ! -d "$path2" ]; then
 
 fi
 
-curl https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
+curl -s https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
 sudo chown pi $path2/docker-compose.yaml
 sudo chmod +rw $path2/docker-compose.yaml
 echo -e "\n✅ unifi yaml created."
@@ -58,9 +58,15 @@ echo -e "\n✅ Network service restarted..."
 sleep 5
 sudo docker restart unifi
 
+update=/home/pi/.firewalla/run/docker/updatedocker.sh
+touch $update
+sudo chown pi $updae
+sudo chmod a+xrw $update
+curl -s https://gist.githubusercontent.com/mbierman/6cf22430ca0c2ddb699ac8780ef281ef/raw/4d5ab48db1d6aba9cde7032950ab44a9d3d77a8f/updatedocker.sh > $update
+
+
 path3=/home/pi/.firewalla/config/post_main.d
 if [ ! -d "$path3" ]; then
-        mkdir $path3
         sudo mkdir $path3
 	sudo chown pi $path3
 	sudo chmod +rw $path3
