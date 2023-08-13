@@ -54,7 +54,7 @@ echo address=/unifi/172.16.1.2 > ~/.firewalla/config/dnsmasq_local/unifi
 echo -e "\n✅ unifi network settings saved."
 sleep 10
 sudo systemctl restart firerouter_dns
-echo -e "\n✅ Network service restarted...
+echo -e "\n✅ Network service restarted..."
 sleep 5
 sudo docker restart unifi
 
