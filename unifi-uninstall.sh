@@ -24,7 +24,7 @@ sudo rm -rf /data/unifi  2> /dev/null
 sudo ip route del 172.17.0.0/16 2> /dev/null
 sudo systemctl restart firerouter_dns
 
-read -p "Please press 'Y' to continue or any key to stop: " -n1 now
+read -p "Do you want to remove the uninstall script? Please press 'Y' to continue or any key to stop: " -n1 now
 
 if  [[ "$now" = "Y" || "$now" = "y" ]]; then
         sudo rm -rf /data/unifi-uninstall.sh && echo -e "\nUninstall script removed.\n\n"
