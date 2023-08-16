@@ -46,9 +46,7 @@ echo "configuring networks..."
 echo "NOW4 NOW NOW"
 ID=$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}')
 echo $ID
-    sudo ip route add 172.16.1.0/24 dev br-$ID table lan_routable
-    sudo ip route add 172.16.1.0/24 dev br-$ID table wan_routable
-    
+
 while true; do
     if ping -W 1 -c 1 172.16.1.2 > /dev/null 2>&1 && ip route show table lan_routable | grep -q '172.16.1.0'; then
         break
@@ -110,5 +108,3 @@ sleep 60
 
 echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
 echo -e "\n\n To update the unifi docker container in the future, go to\n/home/pi/.firewalla/run/docker \n and run\n./updatedocker.sh unifi\n\n"
-
-echo $ID
