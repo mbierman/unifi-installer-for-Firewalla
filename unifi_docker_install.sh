@@ -51,8 +51,6 @@ while true; do
  	sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
 done
 
-exit
-
 echo -e "\n✅ Networks configured"
 
 dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
