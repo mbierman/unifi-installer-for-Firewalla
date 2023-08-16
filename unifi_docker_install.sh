@@ -84,7 +84,7 @@ if [ ! -d "$path3" ]; then
 	sudo chown pi $path3
 	sudo chmod +rw $path3
 fi
-
+exit
 echo "#!/bin/bash
 sudo systemctl start docker
 sudo systemctl start docker-compose@unifi
