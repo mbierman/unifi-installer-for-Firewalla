@@ -57,8 +57,8 @@ while true; do
 
 done
 
-echo go! 
 echo -e "\n✅ Networks configured"
+
 
 dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
 sudo touch $dns_settings
@@ -104,7 +104,13 @@ do
         sleep 2s
 done
 echo -e "\nStarting the container, please wait....\n"
-sleep 60
+
+seconds=60
+while [ $seconds -gt 0 ]; do
+    echo -ne "Countdown: $seconds seconds\033[0K\r"
+    sleep 1
+    ((seconds--))
+done
 
 echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
 echo -e "\n\n To update the unifi docker container in the future, go to\n/home/pi/.firewalla/run/docker \n and run\n./updatedocker.sh unifi\n\n"
