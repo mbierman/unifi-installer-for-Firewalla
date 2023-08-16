@@ -42,8 +42,9 @@ echo -e "\n✅ unifi has started"
 
 
 echo "configuring networks..."
+echo "NOW NOW NOW"
 while true; do
-	if ping -W 1 -c 1 172.16.1.2 >/dev/null 2>&1 && ip route show table lan_routable | grep -q "172.16.1.0"; then
+	if [ ping -W 1 -c 1 172.16.1.2 >/dev/null 2>&1 ] && [ ip route show table lan_routable | grep -q "172.16.1.0" ]; then
 		break
 	fi
  
