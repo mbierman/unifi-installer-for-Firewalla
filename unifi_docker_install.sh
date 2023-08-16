@@ -46,7 +46,6 @@ while ! ping -W 1 -c 1 172.16.1.2 >/dev/null 2>&1 || ! ip route show table lan_r
    
     docker_network="$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}')"
     sudo ip route add 172.16.1.0/24 dev br-"$docker_network" table lan_routable
-    sleep 10
     sudo ip route add 172.16.1.0/24 dev br-"$docker_network" table wan_routable
     sleep 10
 done
