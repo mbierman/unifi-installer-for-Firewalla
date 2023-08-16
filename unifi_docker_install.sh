@@ -53,7 +53,7 @@ while true; do
     if ping -W 1 -c 1 172.16.1.2 > /dev/null 2>&1 && ip route show table lan_routable | grep -q '172.16.1.0'; then
         break
     fi
-    
+    echo $ID
     sudo ip route add 172.16.1.0/24 dev br-$ID table lan_routable
     sudo ip route add 172.16.1.0/24 dev br-$ID table wan_routable
 
