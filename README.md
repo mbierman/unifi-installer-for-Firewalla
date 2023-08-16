@@ -14,7 +14,7 @@ To install:
 2. Copy the line below and paste into the Firewalla shell and then hit enter.
 
 ```
-curl -s -L -C- https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi_docker_install.sh?$(date +%s) | cat <(cat <(bash))
+curl -s -L -C- "https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi_docker_install.sh?$(date +%s)" | cat <(cat <(bash))
 ```
 
 **Standard disclaimer:** I can not be responsible for any issues that may result. Nothing in the script should in any way, affect firewalla as a router or compromise security. Happy to answer questions though if I can. :)
