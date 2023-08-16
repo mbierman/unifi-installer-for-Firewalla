@@ -50,6 +50,7 @@ while true; do
     
     sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
     sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
+    sleep 10
 done
 
 echo -e "\n✅ Networks configured"
