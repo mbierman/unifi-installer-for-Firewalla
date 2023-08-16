@@ -105,13 +105,6 @@ do
 done
 echo -e "\nStarting the container, please wait....\n"
 
-#seconds=60
-#while [ $seconds -gt 0 ]; do
-#    echo -ne "Ready in: $seconds seconds\033[0K\r"
-#    sleep 1
-#    ((seconds--))
-#done
-
 ready
 
 echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
