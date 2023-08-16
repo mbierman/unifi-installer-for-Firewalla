@@ -46,12 +46,13 @@ while true; do
     if ping -W 1 -c 1 172.16.1.2 >/dev/null 2>&1 && ip route show table lan_routable | grep -q "172.16.1.0"; then
         break
     fi
-    
+    echo 1
+    sleep 3
+    echo 2
     docker_network="$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}')"
-    
+    sleep 5
     sudo ip route add 172.16.1.0/24 dev br-"$docker_network" table lan_routable
     sudo ip route add 172.16.1.0/24 dev br-"$docker_network" table wan_routable
-    
     sleep 10
 done
 
