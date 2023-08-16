@@ -54,8 +54,7 @@ while true; do
     sleep 10
 done
 
-exit
-
+echo go! 
 echo -e "\n✅ Networks configured"
 
 dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
