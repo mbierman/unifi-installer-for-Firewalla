@@ -43,7 +43,9 @@ echo -e "\n✅ unifi has started"
 
 
 echo "configuring networks..."
-echo "NOW2 NOW NOW"
+echo "NOW3 NOW NOW"
+    sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
+    sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
 while true; do
     if ping -W 1 -c 1 172.16.1.2 >/dev/null 2>&1 && ip route show table lan_routable | grep -q '172.16.1.0'; then
         break
@@ -51,7 +53,7 @@ while true; do
     
     sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
     sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
-    sleep 10
+
 done
 
 echo go! 
