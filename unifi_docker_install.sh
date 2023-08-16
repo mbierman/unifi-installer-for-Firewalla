@@ -44,7 +44,7 @@ echo -e "\n✅ unifi has started"
 
 echo "configuring networks..."
 echo "NOW3 NOW NOW"
-ID=$(sudo docker network ls | awk '$2 == "unifi_default" {print $1})
+ID=$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}')
 echo $ID
     sudo ip route add 172.16.1.0/24 dev br-$ID table lan_routable
     sudo ip route add 172.16.1.0/24 dev br-$ID table wan_routable
@@ -53,8 +53,8 @@ while true; do
         break
     fi
     
-    sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
-    sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
+    sudo ip route add 172.16.1.0/24 dev br-$ID table lan_routable
+    sudo ip route add 172.16.1.0/24 dev br-$ID table wan_routable
 
 done
 
