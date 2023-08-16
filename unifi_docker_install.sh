@@ -32,6 +32,7 @@ sudo systemctl start docker-compose@unifi
 
 sudo docker ps
 
+function ready () {
 echo -n "Starting docker (this can take ~ one minute)"
 while [ -z "$(sudo docker ps | grep unifi | grep -o Up)" ]
 do
@@ -40,10 +41,11 @@ do
 done
 
 echo -e "\n✅ unifi has started"
+}
 
+ready
 
 echo "configuring networks..."
-echo "NOW5 NOW NOW"
 ID=$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}')
 
 while true; do
@@ -103,12 +105,14 @@ do
 done
 echo -e "\nStarting the container, please wait....\n"
 
-seconds=60
-while [ $seconds -gt 0 ]; do
-    echo -ne "Countdown: $seconds seconds\033[0K\r"
-    sleep 1
-    ((seconds--))
-done
+#seconds=60
+#while [ $seconds -gt 0 ]; do
+#    echo -ne "Ready in: $seconds seconds\033[0K\r"
+#    sleep 1
+#    ((seconds--))
+#done
+
+ready
 
 echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller now. (\n\nNote it may not have a certificate so the browser may give you a security warning.)\n\n"
 echo -e "\n\n To update the unifi docker container in the future, go to\n/home/pi/.firewalla/run/docker \n and run\n./updatedocker.sh unifi\n\n"
