@@ -107,5 +107,5 @@ echo -e "\nStarting the container, please wait....\n"
 
 ready
 
-echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller. (\n\nNote it may not have a certificate so the browser may give you a security warning.\n\nAlso note the container may take a minute to be accessible as the web server starts. Give it a minute or two and refresh your browser. )\n\n"
+echo -e "Done!\n\nYou can open https://172.16.1.2:8443 in your favorite browser and set up your UniFi Controller. \n\nNote it may not have a certificate so the browser may give you a security warning.\n\nAlso note the container may take a minute to be accessible as the web server starts. Give it a minute or two and refresh your browser.\n\n"
 echo -e "\n\n To update the unifi docker container in the future, go to\n/home/pi/.firewalla/run/docker \n and run\n./updatedocker.sh unifi\n\n"
