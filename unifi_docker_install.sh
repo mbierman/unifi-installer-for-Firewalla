@@ -40,11 +40,19 @@ do
 done
 echo -e "\n✅ unifi has started"
 
+function netconfig ()  {
 echo "configuring networks..."
 sleep 10
 sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table lan_routable
 sleep 10
 sudo ip route add 172.16.1.0/24 dev br-$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}') table wan_routable
+}
+
+while ! (ping -c 1 172.16.1.2 >/dev/null 2>&1) || ! (ip route show | grep -q "172.16.1.0"); do
+    netconfig
+done
+
+echo -e "\n✅ Networks configured"
 
 dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
 sudo touch $dns_settings
