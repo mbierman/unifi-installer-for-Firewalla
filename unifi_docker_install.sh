@@ -72,7 +72,7 @@ sleep 10
 sudo systemctl restart firerouter_dns
 echo -e "\n✅ Network service restarted..."
 sleep 5
-sudo docker restart unifi
+# sudo docker restart unifi
 
 update=/home/pi/.firewalla/run/docker/updatedocker.sh
 touch $update
