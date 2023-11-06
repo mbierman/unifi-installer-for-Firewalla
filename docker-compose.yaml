@@ -11,6 +11,11 @@ services:
       default:
         # static IP address for unifi controller
         ipv4_address: 172.16.1.2
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 2048MB
 
 networks:
   default:
