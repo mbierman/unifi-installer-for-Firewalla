@@ -1,14 +1,11 @@
 #!/bin/bash
-# v 2.1
+# v 2.2
 
 echo -e "WARNING! this will uninstall unifi from your Firewalla and remove all settings files.\n\nThere is no way to recover any lost files. Do not do this unless you are sure! "
 
-read -p "Please press 'Y' to continue or any key to stop: " -n1 now
+# Providing 'Y' as input to the first prompt
+now="Y"
 
-if ! [[ "$now" = "Y" || "$now" = "y" ]]; then
-        echo -e "\nNo changes made.\n\n"
-        exit
-fi
 
 echo -e "\n\nStarting uninstall...\n"
 sudo docker container stop unifi && sudo docker container rm unifi
