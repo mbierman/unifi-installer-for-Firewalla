@@ -42,25 +42,8 @@ If you want more of a piecemeal approach, see below.
 1. Run
 ```
 curl -s -L -C - "https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh" | cat <(cat <(bash))
-
-You should now be back to a clean slate and ready to re-install if you choose do do so. 
-
-## Uninstalling Manually
-
-If you want something less severe, the commands below give you more discretion. 
-
-If you need to reset the container (stop and remove and try again) run the following commands. 
-
-**WARNING:** If you use these commands you are stopping and removing the container. Don't do this unless you are sure that you don't mind potentially losing stuff. Nothing here will hurt Firewalla, but it will clobber your unifi controller. If you haven't managed to get the Controller running then there is no harm in going forward. Otherwise, only do this if you know at least a little bit about what you are doing. 
-
 ```
-sudo docker stop unifi && sudo docker container stop unifi && sudo docker container rm unifi
-sudo docker network rm unifi_default
-sudo rm -rf /home/pi/.firewalla/run/docker/unifi/
-sudo rm ~/.firewalla/config/dnsmasq_local/unifi
-sudo rm /home/pi/.firewalla/config/post_main.d/start_unifi.sh
-sudo rm /home/pi/.firewalla/run/docker/updatedocker.sh
-sudo docker ps 
-```
+
+You should now be back to a clean slate and ready to re-install if you choose do do so.
 
 There are lots of UniFi communities on [Reddit](https://www.reddit.com/r/Ubiquiti/) and [Facebook](https://www.facebook.com/groups/586080611853291). If you have UniFi questions, please check there. 
