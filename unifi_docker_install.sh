@@ -64,7 +64,7 @@ dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
 sudo touch $dns_settings
 sudo chown pi $dns_settings
 sudo chmod a+rw $dns_settings
-echo address=/unifi/172.16.1.2 > ~/.firewalla/config/dnsmasq_local/unifi
+echo address=/unifi/172.16.1.2 > $dns_settings
 echo -e "\n✅ unifi network settings saved."
 sleep 10
 sudo systemctl restart firerouter_dns
