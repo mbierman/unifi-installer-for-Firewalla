@@ -41,7 +41,7 @@ If you want more of a piecemeal approach, see below.
 1. ssh to your firewalla. User is always `pi` and the password comes from the Firewalla app. 
 1. Run
 ```
-curl -s -L -C - "https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh?$(date +%s)" | cat <(cat <(bash))
+curl -s -L  - "https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh?$(date +%s)" | bash)
 ```
 
 You should now be back to a clean slate and ready to re-install if you choose do do so.
