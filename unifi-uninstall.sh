@@ -11,15 +11,18 @@ if ! [[ "$now" = "Y" || "$now" = "y" ]]; then
 fi
 
 echo -e "\n\nStarting uninstall...\n"
-[ -d ~/.firewalla/run/docker/unifi ] && cd ~/.firewalla/run/docker/unifi || echo -e "\n\nno directory to delete\n"
 sudo docker container stop unifi && sudo docker container rm unifi
+sudo docker network rm unifi_default
+
+sudo rm -rf /home/pi/.firewalla/run/docker/unifi  2> /dev/null  && echo Directory deleted || echo "No directory to delete"
+sudo rm -rf /home/pi/.firewalla/config/dnsmasq_local/unifi  2> /dev/null
+sudo rm -rf /home/pi/.firewalla/config/post_main.d/start_unifi.sh  2> /dev/null
+sudo rm -r /home/pi/.firewalla/run/docker/updatedocker.sh 2> /dev/null
+sudo docker ps 
 sudo docker system prune -a
 sudo docker image prune -a
 sudo docker volume prune
 sudo docker ps
-sudo rm -rf /home/pi/.firewalla/config/post_main.d/start_unifi.sh  2> /dev/null
-sudo rm -rf /home/pi/.firewalla/config/dnsmasq_local/unifi  2> /dev/null
-sudo rm -rf /home/pi/.firewalla/run/docker/unifi  2> /dev/null
 sudo rm -rf /data/unifi  2> /dev/null
 sudo ip route del 172.17.0.0/16 2> /dev/null
 sudo systemctl restart firerouter_dns
