@@ -1,20 +1,6 @@
 #!/bin/bash
 # v 2.3
 
-# Countdown function
-countdown() {
-    seconds=$1
-    while [ $seconds -gt 0 ]; do
-        echo -ne "Press Ctrl+C to stop execution. Continuing in $seconds seconds...\r"
-        sleep 1
-        : $((seconds--))
-    done
-    echo ""
-}
-
-# Perform countdown for 10 seconds
-countdown 10
-
 echo -e "\n\nStarting uninstall...\n"
 sudo docker container stop unifi && sudo docker container rm unifi
 sudo docker network rm unifi_default
