@@ -77,9 +77,9 @@ If you need to reset the container (stop and remove and try again) run the follo
 
 ```
 sudo docker container stop unifi && sudo docker container rm unifi
-rm /home/pi/.firewalla/config/post_main.d/start_unifi.sh
-rm ~/.firewalla/config/dnsmasq_local/unifi
-rm -rf /home/pi/.firewalla/run/docker/unifi
+sudo rm /home/pi/.firewalla/config/post_main.d/start_unifi.sh
+sudo rm ~/.firewalla/config/dnsmasq_local/unifi
+sudo rm -rf /home/pi/.firewalla/run/docker/unifi
 ```
 
 There are lots of UniFi communities on [Reddit](https://www.reddit.com/r/Ubiquiti/) and [Facebook](https://www.facebook.com/groups/586080611853291). If you have UniFi questions, please check there. 
