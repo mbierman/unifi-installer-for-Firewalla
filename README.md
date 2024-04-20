@@ -39,31 +39,9 @@ If you want more of a piecemeal approach, see below.
 ## Using an uninsall script
 
 1. ssh to your firewalla. User is always `pi` and the password comes from the Firewalla app. 
-1. Save the uninstall script on your firewalla:
-Go to the directory you want to save the script.
-   ```
-   cd /data
-   ```
-1. Create an empty file.
-   ```
-   sudo touch unifi-uninstall.sh
-   ```
-1. Give it permissions to read, write, execute.
-   ```
-   sudo chmod +xwr unifi-uninstall.sh
-   ```
-1. Change the owner of the file
-   ```
-   sudo chown pi unifi-uninstall.sh
-   ```
-1. Get the uninstall file and save to the file you just created.
-   ```
-   curl -s https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh?$(date +%s) > /data/unifi-uninstall.sh
-   ```
-1. Run the script.
-   ```
-   /data/unifi-uninstall.sh
-   ```
+1. Run
+```
+curl -s -L -C - "https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firewalla/main/unifi-uninstall.sh" | cat <(cat <(bash))
 
 You should now be back to a clean slate and ready to re-install if you choose do do so. 
 
