@@ -22,22 +22,22 @@ countdown 10
 echo -e "\n\nStarting uninstall...\n"
 
 # Stop and remove unifi container
-sudo docker update --restart=no unifi && sudo docker container stop unifi && \
-cd /home/pi/.firewalla/run/docker/unifi && sudo docker-compose down
+sudo docker update --restart=no unifi && \
+sudo docker container stop unifi && \
+cd /home/pi/.firewalla/run/docker/unifi && \
+sudo docker-compose down
+sudo docker container rm -f unifi
 sudo docker image rm -f jacobalberty/unifi
-sudo docker container rm unifi
-sudo docker network rm unifi_default
-sudo docker ps
+sudo docker network rm unifi_default 
 sudo docker system prune -af && echo "✅ System pruned"
 
-# remove all traces
-
+# Remove all traces
 sudo rm -rf /data/unifi 2> /dev/null
 sudo ip route del 172.17.0.0/16 2> /dev/null
-sudo rm -rf /home/pi/.firewalla/run/docker/unifi 2> /dev/null && echo ✅ Directory deleted || echo "❌ No directory to delete"
-sudo rm -rf /home/pi/.firewalla/config/dnsmasq_local/unifi 2> /dev/null && echo ✅ dnsmasq_local/unifi deleted || echo "❌ No dnsmasq_local/unifi to delete"
-sudo rm -rf /home/pi/.firewalla/config/post_main.d/start_unifi.sh 2> /dev/null && echo ✅ start_unifi.sh deleted || echo "❌ No start_unifi.sh to delete"
-sudo rm -r /home/pi/.firewalla/run/docker/updatedocker.sh 2> /dev/null && echo ✅ updatedocker.sh deleted || echo "❌ No updatedocker.sh to delete"
+sudo rm -rf /home/pi/.firewalla/run/docker/unifi 2> /dev/null && echo "✅ Directory deleted" || echo "❌ No directory to delete"
+sudo rm -rf /home/pi/.firewalla/config/dnsmasq_local/unifi 2> /dev/null && echo "✅ dnsmasq_local/unifi deleted" || echo "❌ No dnsmasq_local/unifi to delete"
+sudo rm -rf /home/pi/.firewalla/config/post_main.d/start_unifi.sh 2> /dev/null && echo "✅ start_unifi.sh deleted" || echo "❌ No start_unifi.sh to delete"
+sudo rm -rf /home/pi/.firewalla/run/docker/updatedocker.sh 2> /dev/null && echo "✅ updatedocker.sh deleted" || echo "❌ No updatedocker.sh to delete"
 
 # Restart DNS service to apply changes
 echo -e "\nRestarting DNS...\n"
