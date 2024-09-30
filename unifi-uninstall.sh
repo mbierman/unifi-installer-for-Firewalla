@@ -1,5 +1,5 @@
 #!/bin/bash
-# v 2.4
+version="2.6"
 
 # Countdown function
 countdown() {
@@ -14,6 +14,8 @@ countdown() {
 
 # Display warning message
 echo -e "WARNING! This will uninstall unifi from your Firewalla and remove all settings files.\n\nThere is no way to recover any lost files. Do not proceed unless you are sure!\n"
+echo -e "version: $version"
+
 
 # Perform countdown for 10 seconds
 countdown 10
