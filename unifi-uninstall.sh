@@ -12,7 +12,6 @@ countdown() {
     echo ""
 }
 
-# Display warning message
 echo -e "WARNING! This will uninstall unifi from your Firewalla and remove all settings files.\n\nThere is no way to recover any lost files. Do not proceed unless you are sure!\n"
 echo -e "version: $version"
 
@@ -20,10 +19,8 @@ echo -e "version: $version"
 # Perform countdown for 10 seconds
 countdown 10
 
-# Start the uninstall process
 echo -e "\n\nStarting uninstall...\n"
 
-# Set the container name
 container_name="unifi"
 
 if sudo docker ps -a --format '{{.Names}}' | grep -q "^$container_name$"; then
@@ -35,7 +32,6 @@ if sudo docker ps -a --format '{{.Names}}' | grep -q "^$container_name$"; then
     if [[ $? -eq 0 ]]; then
         echo "✅ Unifi container stop command issued."
 
-        # Step 3: Loop until the container is stopped
         echo "🔄 Waiting for the Unifi container to stop..."
         while sudo docker ps --format '{{.Names}}' | grep -q "^$container_name$"; do
             sleep 1  # Wait for 1 second before checking again
