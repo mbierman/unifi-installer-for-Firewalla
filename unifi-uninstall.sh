@@ -1,5 +1,5 @@
 #!/bin/bash
-# v 2.3
+# v 2.4
 
 # Countdown function
 countdown() {
