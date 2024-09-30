@@ -21,15 +21,21 @@ countdown 10
 # Start the uninstall process
 echo -e "\n\nStarting uninstall...\n"
 
-# Stop and remove unifi container
 sudo docker update --restart=no unifi && \
 sudo docker container stop unifi && \
 cd /home/pi/.firewalla/run/docker/unifi && \
 sudo docker-compose down
+
+# Force remove container and associated images
 sudo docker container rm -f unifi
 sudo docker image rm -f jacobalberty/unifi
-sudo docker network rm unifi_default 
+sudo docker network rm unifi_default
+sudo docker ps 
 sudo docker system prune -af && echo "✅ System pruned"
+
+# Restart DNS service to apply changes
+echo -e "\nRestarting DNS...\n"
+sudo systemctl restart firerouter_dns
 
 # Remove all traces
 sudo rm -rf /data/unifi 2> /dev/null
@@ -38,9 +44,5 @@ sudo rm -rf /home/pi/.firewalla/run/docker/unifi 2> /dev/null && echo "✅ Direc
 sudo rm -rf /home/pi/.firewalla/config/dnsmasq_local/unifi 2> /dev/null && echo "✅ dnsmasq_local/unifi deleted" || echo "❌ No dnsmasq_local/unifi to delete"
 sudo rm -rf /home/pi/.firewalla/config/post_main.d/start_unifi.sh 2> /dev/null && echo "✅ start_unifi.sh deleted" || echo "❌ No start_unifi.sh to delete"
 sudo rm -rf /home/pi/.firewalla/run/docker/updatedocker.sh 2> /dev/null && echo "✅ updatedocker.sh deleted" || echo "❌ No updatedocker.sh to delete"
-
-# Restart DNS service to apply changes
-echo -e "\nRestarting DNS...\n"
-sudo systemctl restart firerouter_dns
 
 echo -e "\n\nfin."
