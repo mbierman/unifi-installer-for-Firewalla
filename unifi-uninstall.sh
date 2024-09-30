@@ -21,16 +21,21 @@ countdown 10
 # Start the uninstall process
 echo -e "\n\nStarting uninstall...\n"
 
-sudo docker update --restart=no unifi && \
-sudo docker container stop unifi && \
-cd /home/pi/.firewalla/run/docker/unifi && \
-sudo docker-compose down
+# Check if the Unifi container exists, then stop and remove it
+if sudo docker ps -a --format '{{.Names}}' | grep -q '^unifi$'; then
+    sudo docker update --restart=no unifi && \
+    sudo docker container stop unifi && \
+    cd /home/pi/.firewalla/run/docker/unifi && \
+    sudo docker-compose down
+    sudo docker container rm -f unifi
+    sudo docker image rm -f jacobalberty/unifi
+    sudo docker network rm unifi_default
+    echo "✅ Unifi container removed"
+else
+    echo "❌ No such container: unifi"
+fi
 
-# Force remove container and associated images
-sudo docker container rm -f unifi
-sudo docker image rm -f jacobalberty/unifi
-sudo docker network rm unifi_default
-sudo docker ps 
+# Cleanup Docker and prune system
 sudo docker system prune -af && echo "✅ System pruned"
 
 # Restart DNS service to apply changes
