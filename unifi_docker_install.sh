@@ -1,33 +1,6 @@
 #!/bin/bash 
-# v 1.5.1
-
-read -p "Is this a Gold SE box? (y/n): " answer
-
-# Check the answer
-if [[ "$answer" == [Yy]* ]]; then
-    echo "You chose Yes. Doing X..."
-    ipset="sudo systemctl start docker
-	sudo systemctl start docker-compose@unifi
-	sudo ipset create -! docker_lan_routable_net_set hash:net
-	sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
-	sudo ipset create -! docker_wan_routable_net_set hash:net
-	sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
-	sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE"
-
-
-else
-    echo "You chose No. Doing Y..."
-   ipset="#!/bin/bash
-	sudo systemctl start docker
-	sudo systemctl start docker-compose@unifi
-	sudo ipset create -! docker_lan_routable_net_set hash:net
-	sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
-	sudo ipset create -! docker_wan_routable_net_set hash:net
-	sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24"
-fi
-
-echo $ipset
-exit 
+# v 1.6.0
+  
 
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
@@ -49,6 +22,31 @@ if [ ! -d "$path2" ]; then
  	echo -e "\n✅ unifi run directory exists."
 
 fi
+
+# This is used later but get the information up front. 
+
+read -p "Is this a Gold SE box? (y/n): " answer 
+if [[ "$answer" == [Yy]* ]]; then
+	echo "Gold SE..."
+  	ipset="#!/bin/bash
+ 	sudo systemctl start docker
+ 	sudo systemctl start docker-compose@unifi 
+ 	sudo ipset create -! docker_lan_routable_net_set hash:net
+ 	sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+ 	sudo ipset create -! docker_wan_routable_net_set hash:net
+ 	sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
+ 	sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE"
+ else
+	echo "Not Gold SE..."
+	ipset="#!/bin/bash
+ 	sudo systemctl start docker
+ 	sudo systemctl start docker-compose@unifi
+ 	sudo ipset create -! docker_lan_routable_net_set hash:net
+ 	sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+ 	sudo ipset create -! docker_wan_routable_net_set hash:net
+ 	sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24"
+ fi 
+
 
 curl -s https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
 sudo chown pi $path2/docker-compose.yaml
@@ -114,9 +112,7 @@ if [ ! -d "$path3" ]; then
 	sudo chmod +rw $path3
 fi
 
-# HERE
-
-echo $ipset >  $path3/start_unifi.sh
+echo -e "$ipset" | sed 's/^[ \t]*//' >  $path3/start_unifi.sh
 
 chmod a+x $path3/start_unifi.sh
 chown pi  $path3/start_unifi.sh
