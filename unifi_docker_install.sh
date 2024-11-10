@@ -1,27 +1,6 @@
 #!/bin/bash 
 # v 1.6.0
-  
 
-path1=/data/unifi
-if [ ! -d "$path1" ]; then
-        sudo mkdir $path1
-	sudo chown pi $path1
-	sudo chmod +rw $path1
- 	echo -e "\n✅ unifi directory created."
- else
- 	echo -e "\n✅ unifi directory exists."
-fi
-
-path2=/home/pi/.firewalla/run/docker/unifi/
-if [ ! -d "$path2" ]; then
-        sudo mkdir $path2
-	sudo chown pi $path2
-	sudo chmod +rw $path2
-  	echo -e "\n✅ unifi run directory created."
- else
- 	echo -e "\n✅ unifi run directory exists."
-
-fi
 
 # This is used later but get the information up front. 
 
@@ -55,6 +34,27 @@ fi
 
 echo "$ipset"
 exit
+  
+path1=/data/unifi
+if [ ! -d "$path1" ]; then
+        sudo mkdir $path1
+	sudo chown pi $path1
+	sudo chmod +rw $path1
+ 	echo -e "\n✅ unifi directory created."
+ else
+ 	echo -e "\n✅ unifi directory exists."
+fi
+
+path2=/home/pi/.firewalla/run/docker/unifi/
+if [ ! -d "$path2" ]; then
+        sudo mkdir $path2
+	sudo chown pi $path2
+	sudo chmod +rw $path2
+  	echo -e "\n✅ unifi run directory created."
+ else
+ 	echo -e "\n✅ unifi run directory exists."
+
+fi
 
 curl -s https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
 sudo chown pi $path2/docker-compose.yaml
