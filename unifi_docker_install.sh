@@ -55,6 +55,7 @@ EOF
 fi
 
 echo "$ipset"
+exit
 
 
 curl -s https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
