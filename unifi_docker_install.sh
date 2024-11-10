@@ -29,10 +29,9 @@ else
 EOF
     )
 fi
+echo "$ipset"
 exit
 
-echo "$ipset"
-  
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
         sudo mkdir $path1
