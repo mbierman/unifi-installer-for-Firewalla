@@ -25,8 +25,7 @@ fi
 
 # This is used later but get the information up front. 
 
-read -p "Is this a Gold SE box? (y/n): " answer
-
+series=$(/etc/update-motd.d/00-header  | grep "Welcome to" | sed -e "s|Welcome to ||g" -e "s|FIREWALLA ||g" -e "s|\s[0-9].*$||g")
 if [[ "$answer" == [Yy]* ]]; then
     echo "Gold SE..."
     ipset=$(cat <<EOF
@@ -56,7 +55,6 @@ fi
 
 echo "$ipset"
 exit
-
 
 curl -s https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
 sudo chown pi $path2/docker-compose.yaml
