@@ -28,7 +28,6 @@ EOF
     )
 fi
 echo "$ipset" | sed 's/^[ \t]*//' 
-exit
 
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
