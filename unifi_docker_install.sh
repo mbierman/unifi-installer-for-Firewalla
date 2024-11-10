@@ -4,7 +4,6 @@
 [ -f /etc/update-motd.d/00-header ] && series=$(/etc/update-motd.d/00-header | grep "Welcome to" | sed -e "s|Welcome to ||g" -e "s|FIREWALLA ||g" -e "s|\s[0-9].*$||g") || series=""
 
 if [[ "$series" == *"gold-se"* ]]; then
-    echo "Gold SE..."
     ipset=$(cat <<EOF
         #!/bin/bash
         sudo systemctl start docker
@@ -17,7 +16,6 @@ if [[ "$series" == *"gold-se"* ]]; then
 EOF
     )
 else
-    echo "Not Gold SE..."
     ipset=$(cat <<EOF
         #!/bin/bash
         sudo systemctl start docker
@@ -29,7 +27,7 @@ else
 EOF
     )
 fi
-echo "$ipset"
+echo "$ipset" | sed 's/^[ \t]*//' 
 exit
 
 path1=/data/unifi
@@ -90,7 +88,6 @@ done
 
 echo -e "\n✅ Networks configured"
 
-
 dns_settings=/home/pi/.firewalla/config/dnsmasq_local/unifi
 sudo touch $dns_settings
 sudo chown pi $dns_settings
@@ -101,7 +98,6 @@ sleep 10
 sudo systemctl restart firerouter_dns
 echo -e "\n✅ Network service restarted..."
 sleep 5
-# sudo docker restart unifi
 
 update=/home/pi/.firewalla/run/docker/updatedocker.sh
 touch $update
