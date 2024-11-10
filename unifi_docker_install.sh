@@ -1,6 +1,34 @@
 #!/bin/bash 
 # v 1.5.1
 
+read -p "Is this a Gold SE box? (y/n): " answer
+
+# Check the answer
+if [[ "$answer" == [Yy]* ]]; then
+    echo "You chose Yes. Doing X..."
+    ipset="sudo systemctl start docker
+	sudo systemctl start docker-compose@unifi
+	sudo ipset create -! docker_lan_routable_net_set hash:net
+	sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+	sudo ipset create -! docker_wan_routable_net_set hash:net
+	sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
+	sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE"
+
+
+else
+    echo "You chose No. Doing Y..."
+   ipset="#!/bin/bash
+	sudo systemctl start docker
+	sudo systemctl start docker-compose@unifi
+	sudo ipset create -! docker_lan_routable_net_set hash:net
+	sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+	sudo ipset create -! docker_wan_routable_net_set hash:net
+	sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24"
+fi
+
+echo $ipset
+exit 
+
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
         sudo mkdir $path1
@@ -86,13 +114,9 @@ if [ ! -d "$path3" ]; then
 	sudo chmod +rw $path3
 fi
 
-echo "#!/bin/bash
-sudo systemctl start docker
-sudo systemctl start docker-compose@unifi
-sudo ipset create -! docker_lan_routable_net_set hash:net
-sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
-sudo ipset create -! docker_wan_routable_net_set hash:net
-sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  $path3/start_unifi.sh
+# HERE
+
+echo $ipset >  $path3/start_unifi.sh
 
 chmod a+x $path3/start_unifi.sh
 chown pi  $path3/start_unifi.sh
