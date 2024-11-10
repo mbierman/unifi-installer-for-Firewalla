@@ -5,7 +5,6 @@
 # This is used later but get the information up front. 
 
 series=$(/etc/update-motd.d/00-header | grep "Welcome to" | sed -e "s|Welcome to ||g" -e "s|FIREWALLA ||g" -e "s|\s[0-9].*$||g")
-echo -"$series"-
 
 if [[ "$series" == *"gold-se"* ]]; then
     echo "Gold SE..."
@@ -35,7 +34,6 @@ EOF
 fi
 
 echo "$ipset"
-exit
   
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
