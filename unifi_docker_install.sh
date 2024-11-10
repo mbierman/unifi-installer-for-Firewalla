@@ -94,7 +94,7 @@ echo -e  "#!/bin/bash
 
 [ -f /etc/update-motd.d/00-header ] && series=$(/etc/update-motd.d/00-header | grep "Welcome to" | sed -e "s|Welcome to ||g" -e "s|FIREWALLA ||g" -e "s|\s[0-9].*$||g") || series=""
 
-if [[ "$series" == *"gold-se"* ]]; then
+if [[ "$series" == *"gold-se"* ]] && ! grep -q "MASQUERADE" "$path3/start_unifi.sh"; then
 	echo "Adding Gold SE networking..."
 	echo -e "sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE" >>  $path3/start_unifi.sh
 fi
