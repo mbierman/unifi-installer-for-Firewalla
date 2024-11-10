@@ -29,24 +29,32 @@ read -p "Is this a Gold SE box? (y/n): " answer
 
 if [[ "$answer" == [Yy]* ]]; then
     echo "Gold SE..."
-    ipset="#!/bin/bash
-    sudo systemctl start docker
-    sudo systemctl start docker-compose@unifi
-    sudo ipset create -! docker_lan_routable_net_set hash:net
-    sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
-    sudo ipset create -! docker_wan_routable_net_set hash:net
-    sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
-    sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE"
+    ipset=$(cat <<EOF
+        #!/bin/bash
+        sudo systemctl start docker
+        sudo systemctl start docker-compose@unifi
+        sudo ipset create -! docker_lan_routable_net_set hash:net
+        sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+        sudo ipset create -! docker_wan_routable_net_set hash:net
+        sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
+        sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE
+EOF
+    )
 else
     echo "Not Gold SE..."
-    ipset="#!/bin/bash
-    sudo systemctl start docker
-    sudo systemctl start docker-compose@unifi
-    sudo ipset create -! docker_lan_routable_net_set hash:net
-    sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
-    sudo ipset create -! docker_wan_routable_net_set hash:net
-    sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24"
+    ipset=$(cat <<EOF
+        #!/bin/bash
+        sudo systemctl start docker
+        sudo systemctl start docker-compose@unifi
+        sudo ipset create -! docker_lan_routable_net_set hash:net
+        sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+        sudo ipset create -! docker_wan_routable_net_set hash:net
+        sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
+EOF
+    )
 fi
+
+echo "$ipset"
 
 
 curl -s https://raw.githubusercontent.com/mbierman/unifi-installer/main/docker-compose.yaml > $path2/docker-compose.yaml
