@@ -1,33 +1,5 @@
 #!/bin/bash 
-# v 1.6.0
-
-[ -f /etc/update-motd.d/00-header ] && series=$(/etc/update-motd.d/00-header | grep "Welcome to" | sed -e "s|Welcome to ||g" -e "s|FIREWALLA ||g" -e "s|\s[0-9].*$||g") || series=""
-
-if [[ "$series" == *"gold-se"* ]]; then
-    ipset=$(cat <<EOF
-        #!/bin/bash
-        sudo systemctl start docker
-        sudo systemctl start docker-compose@unifi
-        sudo ipset create -! docker_lan_routable_net_set hash:net
-        sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
-        sudo ipset create -! docker_wan_routable_net_set hash:net
-        sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
-        sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE
-EOF
-    )
-else
-    ipset=$(cat <<EOF
-        #!/bin/bash
-        sudo systemctl start docker
-        sudo systemctl start docker-compose@unifi
-        sudo ipset create -! docker_lan_routable_net_set hash:net
-        sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
-        sudo ipset create -! docker_wan_routable_net_set hash:net
-        sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24
-EOF
-    )
-fi
-echo "$ipset" | sed 's/^[ \t]*//' 
+# v 1.6.1
 
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
@@ -112,7 +84,20 @@ if [ ! -d "$path3" ]; then
 	sudo chmod +rw $path3
 fi
 
-echo -e "$ipset" | sed 's/^[ \t]*//' >  $path3/start_unifi.sh
+echo -e  "#!/bin/bash
+        sudo systemctl start docker
+        sudo systemctl start docker-compose@unifi
+        sudo ipset create -! docker_lan_routable_net_set hash:net
+        sudo ipset add -! docker_lan_routable_net_set 172.16.1.0/24
+        sudo ipset create -! docker_wan_routable_net_set hash:net
+        sudo ipset add -! docker_wan_routable_net_set 172.16.1.0/24" >  $path3/start_unifi.sh
+
+[ -f /etc/update-motd.d/00-header ] && series=$(/etc/update-motd.d/00-header | grep "Welcome to" | sed -e "s|Welcome to ||g" -e "s|FIREWALLA ||g" -e "s|\s[0-9].*$||g") || series=""
+
+if [[ "$series" == *"gold-se"* ]]; then
+	echo "Adding Gold SE networking..."
+	echo -e "sudo iptables -t nat -A POSTROUTING -s 172.16.1.0/16 -o eth0 -j MASQUERADE" >>  $path3/start_unifi.sh
+fi
 
 chmod a+x $path3/start_unifi.sh
 chown pi  $path3/start_unifi.sh
