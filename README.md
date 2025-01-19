@@ -43,8 +43,3 @@ curl -s -L "https://raw.githubusercontent.com/mbierman/unifi-installer-for-Firew
 You should now be back to a clean slate and ready to re-install if you choose do do so.
 
 There are lots of UniFi communities on [Reddit](https://www.reddit.com/r/Ubiquiti/) and [Facebook](https://www.facebook.com/groups/586080611853291). If you have UniFi questions, please check there. 
-
-# Video
-A video by Ethernet Blueprint showing how this works.
-[![Video](https://img.youtube.com/vi/yMyHo1YpdKI/hqdefault.jpg)](https://www.youtube.com/watch?v=yMyHo1YpdKI)
-
