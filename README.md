@@ -47,4 +47,5 @@ There are lots of UniFi communities on [Reddit](https://www.reddit.com/r/Ubiquit
 # Video
 
 A video by Ethernet Blueprint showing how this works.
+
 [![Video](https://img.youtube.com/vi/yMyHo1YpdKI/hqdefault.jpg)](https://www.youtube.com/watch?v=yMyHo1YpdKI)
