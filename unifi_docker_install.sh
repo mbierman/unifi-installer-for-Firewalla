@@ -1,5 +1,5 @@
 #!/bin/bash 
-# v 1.6.1
+# v 1.7.0
 
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
@@ -48,14 +48,13 @@ ready
 echo "configuring networks..."
 ID=$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}')
 
-while true; do
-    if ping -W 1 -c 1 172.16.1.2 > /dev/null 2>&1 && ip route show table lan_routable | grep -q '172.16.1.0'; then
-        break
-    fi
+if ! ip route show table lan_routable | grep -q '172.16.1.0'; then
     sudo ip route add 172.16.1.0/24 dev br-$ID table lan_routable
-    sudo ip route add 172.16.1.0/24 dev br-$ID table wan_routable
+fi
 
-done
+if ! ip route show table wan_routable | grep -q '172.16.1.0'; then
+    sudo ip route add 172.16.1.0/24 dev br-$ID table wan_routable
+fi
 
 echo -e "\n✅ Networks configured"
 
