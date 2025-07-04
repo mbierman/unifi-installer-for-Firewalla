@@ -50,10 +50,14 @@ ID=$(sudo docker network ls | awk '$2 == "unifi_default" {print $1}')
 
 if ! ip route show table lan_routable | grep -q '172.16.1.0'; then
     sudo ip route add 172.16.1.0/24 dev br-$ID table lan_routable
+    else 
+    echo -e "LAN route is already in place.\n"
 fi
 
 if ! ip route show table wan_routable | grep -q '172.16.1.0'; then
     sudo ip route add 172.16.1.0/24 dev br-$ID table wan_routable
+else 
+    echo -e "WAN route is already in place.\n"
 fi
 
 echo -e "\n✅ Networks configured"
