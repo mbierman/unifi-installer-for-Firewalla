@@ -1,5 +1,5 @@
 #!/bin/bash 
-# v 1.7.0
+# v 1.7.1
 
 path1=/data/unifi
 if [ ! -d "$path1" ]; then
@@ -73,11 +73,12 @@ sudo systemctl restart firerouter_dns
 echo -e "\n✅ Network service restarted..."
 sleep 5
 
+#Update 
 update=/home/pi/.firewalla/run/docker/updatedocker.sh
 touch $update
 sudo chown pi $update
 sudo chmod a+xrw $update
-curl -s https://gist.githubusercontent.com/mbierman/6cf22430ca0c2ddb699ac8780ef281ef/raw/57f0de8bd42a4dad39f1ed7fc5f746d53cedc7ed/updatedocker.sh > $update
+curl -s https://gist.githubusercontent.com/mbierman/6cf22430ca0c2ddb699ac8780ef281ef/raw/b2790767203e4ee49a250f46047a07c6d7a8a79b/updatedocker.sh > $update
 
 
 path3=/home/pi/.firewalla/config/post_main.d
